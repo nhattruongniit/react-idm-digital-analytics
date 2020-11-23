@@ -23,7 +23,7 @@ function NavBar() {
           aria-label="Open menu"
           isCollapsible
           onClick={() => {}}
-          isActive={false}
+          isActive={true}
         />
         <img className="navbar_logo" src={LogoIcon} alt="Logo" width="30px" />
       </div>
