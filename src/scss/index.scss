@@ -4,8 +4,20 @@ body {
     'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  word-break: break-all;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+@import './navbar.scss';
+
+.topbar_header {
+  margin-left: 304px;
 }
