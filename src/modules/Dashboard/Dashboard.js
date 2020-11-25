@@ -1,12 +1,14 @@
 
 // components
-import TopBar from './TopBar';
 import NavBar from './NavBar';
+import CenterPanel from './CenterPanel';
 
 const Dashboard = () => (
   <div className="container">
     <NavBar />
-    <TopBar />
+    <CenterPanel>
+      dsadsa
+    </CenterPanel>
   </div>
 );
 

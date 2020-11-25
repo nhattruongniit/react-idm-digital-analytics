@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-    'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'IBMPlexSans-SemiBold', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   word-break: break-all;
@@ -16,5 +16,183 @@ ul {
   padding: 0;
 }
 
-@import './navbar.scss';
-@import './topbar.scss';
+.container {
+  display: flex;
+}
+
+/* NavBar */
+.navbar_root {
+  background: #161616 0% 0% no-repeat padding-box;
+  width: 304px;
+  min-height: 100vh;
+}
+
+.navbar_options {
+  width: 48px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #393939;
+  height: 100%;
+
+  .bx--header__action > svg {
+    fill: #a8a8a8;
+  }
+}
+
+.navbar_top {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #393939;
+
+  .bx--header__menu-trigger > svg {
+    fill: #a8a8a8;
+  }
+
+  .bx--header__action--active {
+    border-right: 0;
+    border-left: 0;
+    border-bottom: 0;
+  }
+}
+
+.navbar_logo {
+  margin-left: 7px;
+  display: block;
+}
+
+.navbar_container {
+  display: flex;
+  align-items: flex-start;
+  height: calc(100vh - 49px);
+}
+
+.navbar_treeview {
+  width: 100%;
+  height: 100%;
+  padding: 0 16px;
+}
+
+.navbar_ul {
+  color: #a8a8a8;
+
+  li {
+    cursor: pointer;
+  }
+}
+
+.navbar_label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &_icon {
+    flex: 0 0 20px;
+  }
+}
+
+.navbar_ul_line {
+  border-bottom: 1px solid #393939;
+}
+
+.nav_space {
+  padding: 16px 0;
+}
+
+.navbar_project {
+  padding-bottom: 16px;
+  .navbar_label {
+    padding: 8px 0;
+  }
+}
+
+/* TopBar*/
+.topbar_header {
+  color: #c6c6c6;
+}
+
+.topbar_header {
+  margin-left: 304px;
+
+  .bx--header__action > svg {
+    fill: #c6c6c6;
+  }
+}
+
+/* CenterPanel */
+
+.centerPanel_wrapper {
+  flex-grow: 1;
+}
+
+.centerPanel_top {
+  display: flex;
+  align-items: center;
+  background-color: #161616;
+  border-bottom: 1px solid #393939;
+  color: #fff;
+}
+
+.tabs_root {
+  flex-grow: 1;
+  // align-self: stretch;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tabs_item {
+  height: 3rem;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  position: relative;
+  font-size: 14px;
+  color: #c6c6c6;
+  cursor: pointer;
+
+  & + & {
+    margin-left: 2px;
+  }
+
+  &_close {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+
+  &.active {
+    color: #f4f4f4;
+    span {
+      padding-right: 30px;
+    }
+    &::after {
+      background-color: #4589ff;
+    }
+  }
+
+  span {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 15px;
+  }
+
+  &::after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background-color: #e0e0e0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+.tabs_add {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  padding: 0 10px;
+}

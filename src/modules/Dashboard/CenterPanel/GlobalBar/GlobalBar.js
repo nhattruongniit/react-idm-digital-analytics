@@ -1,23 +1,19 @@
 import React from 'react';
 
+// carbon core
+import {
+  HeaderGlobalAction,
+  HeaderGlobalBar,
+} from "carbon-components-react/lib/components/UIShell";
+
+// carbon icons
 import Notification20 from "@carbon/icons-react/lib/notification/20";
 import AppSwitcher20 from "@carbon/icons-react/lib/app-switcher/20";
 import UserAvatarFilledAlt20 from "@carbon/icons-react/lib/user--avatar--filled--alt/20";
-import {
-  Header,
-  HeaderGlobalAction,
-  HeaderGlobalBar,
-  HeaderNavigation,
-  HeaderMenu,
-  HeaderMenuItem,
-} from "carbon-components-react/lib/components/UIShell";
 
-function TopBar() {
+function GlobalBar() {
   return (
-    <Header className="topbar_header" aria-label="IBM Platform Name">
-      <div>
-        this is tab
-      </div>
+    <div className="globalBar_container">
       <HeaderGlobalBar>
         <HeaderGlobalAction aria-label="Notifications" onClick={() => {}}>
           <Notification20 />
@@ -29,8 +25,8 @@ function TopBar() {
           <AppSwitcher20 />
         </HeaderGlobalAction>
       </HeaderGlobalBar>
-    </Header>
+    </div>
   )
 }
 
-export default TopBar
+export default GlobalBar
