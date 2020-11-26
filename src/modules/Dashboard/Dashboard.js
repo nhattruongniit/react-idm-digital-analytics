@@ -7,7 +7,7 @@ const Dashboard = () => (
   <div className="container">
     <NavBar />
     <CenterPanel>
-      dsadsa
+      react grid layout
     </CenterPanel>
   </div>
 );

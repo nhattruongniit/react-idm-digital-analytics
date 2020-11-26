@@ -1,4 +1,6 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import clsx from 'clsx';
 
 // carbon core
 import {
@@ -17,29 +19,46 @@ import Snowflake20 from "@carbon/icons-react/lib/snowflake/20";
 // assets
 import LogoIcon from 'assets/images/logo.svg';
 
+// actions
+import { setExpandDrawer } from 'actions/app.action';
+
+// selectors
+import { isExpandDrawerSelector } from 'selectors/app.selector'
+
 function NavBar() {
+  const dispatch = useDispatch();
+  const isExpandDrawer = useSelector(isExpandDrawerSelector);
+
+  const toggleDrawer = () => {
+    dispatch(setExpandDrawer(!isExpandDrawer))
+  }
+
   return (
-    <div className="navbar_root">
+    <div className={clsx('navbar_root', !isExpandDrawer && 'navbar_root_hidden')}>
       <div className="navbar_top">
         <HeaderMenuButton
           aria-label="Open menu"
           isCollapsible
-          onClick={() => {}}
-          isActive={true}
+          onClick={toggleDrawer}
+          isActive={isExpandDrawer}
         />
-        <img className="navbar_logo" src={LogoIcon} alt="Logo" width="30px" />
+        {isExpandDrawer  && <img className="navbar_logo" src={LogoIcon} alt="Logo" width="30px" /> }
       </div>
       <div className="navbar_container">
         <div className="navbar_options">
           <HeaderGlobalAction aria-label="Folder" onClick={() => {}}>
             <FolderDetails20 />
           </HeaderGlobalAction>
-          <HeaderGlobalAction aria-label="Folder" onClick={() => {}}>
-            <Snowflake20 />
-          </HeaderGlobalAction>
-          <HeaderGlobalAction aria-label="Folder" onClick={() => {}}>
-            <Search20 />
-          </HeaderGlobalAction>
+          {isExpandDrawer ? (
+            <>
+              <HeaderGlobalAction aria-label="Folder" onClick={() => {}}>
+                <Snowflake20 />
+              </HeaderGlobalAction>
+              <HeaderGlobalAction aria-label="Folder" onClick={() => {}}>
+                <Search20 />
+              </HeaderGlobalAction>
+            </>
+          ) : null}
           <HeaderGlobalAction aria-label="Settings" onClick={() => {}}>
             <Settings20 />
           </HeaderGlobalAction>
@@ -47,7 +66,7 @@ function NavBar() {
             <Help20 />
           </HeaderGlobalAction>
         </div>
-        <div className="navbar_treeview">
+        <div className={clsx('navbar_treeview', !isExpandDrawer && 'navbar_treeview_hidden')}>
           <ul className="navbar_ul">
             <li className="navbar_project navbar_ul_line">
               <div className="navbar_label">

@@ -16,6 +16,20 @@ ul {
   padding: 0;
 }
 
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #000000;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #000000;
+  border: 2px solid #555555;
+}
+
 .container {
   display: flex;
 }
@@ -25,6 +39,7 @@ ul {
   background: #161616 0% 0% no-repeat padding-box;
   width: 304px;
   min-height: 100vh;
+  position: fixed;
 }
 
 .navbar_options {
@@ -122,6 +137,7 @@ ul {
 
 .centerPanel_wrapper {
   flex-grow: 1;
+  padding-left: 304px;
 }
 
 .centerPanel_top {
@@ -130,6 +146,9 @@ ul {
   background-color: #161616;
   border-bottom: 1px solid #393939;
   color: #fff;
+  position: fixed;
+  width: calc(100vw - 320px);
+  z-index: 1;
 }
 
 .tabs_root {
@@ -195,4 +214,27 @@ ul {
   align-items: center;
   margin-left: 10px;
   padding: 0 10px;
+}
+
+/* hide drawer */
+.navbar_root_hidden {
+  width: 48px;
+}
+
+.navbar_treeview_hidden {
+  display: none;
+}
+
+/* end dreawer */
+.tab_content {
+  min-height: 150vh;
+  color: #fff;
+  padding: 63px 15px 15px 15px;
+  border-left: 1px solid #393939;
+}
+
+@media (max-width: 968px) {
+  .globalBar_container {
+    display: none;
+  }
 }
