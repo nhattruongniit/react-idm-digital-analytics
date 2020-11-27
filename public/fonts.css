@@ -2,3 +2,8 @@
   font-family: 'IBMPlexSans-SemiBold';
   src: url('/assets/fonts/IBMPlexSans-SemiBold.ttf') format('truetype');
 }
+
+@font-face {
+  font-family: 'IBMPlexSans-Regular';
+  src: url('/assets/fonts/IBMPlexSans-Regular.ttf') format('truetype');
+}

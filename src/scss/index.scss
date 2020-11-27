@@ -1,3 +1,5 @@
+@import './theme.scss';
+
 body {
   margin: 0;
   font-family: 'IBMPlexSans-SemiBold', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
@@ -11,7 +13,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-ul {
+ul,
+p {
   margin: 0;
   padding: 0;
 }
@@ -146,9 +149,9 @@ ul {
   background-color: #161616;
   border-bottom: 1px solid #393939;
   color: #fff;
-  position: fixed;
-  width: calc(100vw - 320px);
   z-index: 1;
+  position: sticky;
+  top: 0;
 }
 
 .tabs_root {
@@ -229,12 +232,104 @@ ul {
 .tab_content {
   min-height: 150vh;
   color: #fff;
-  padding: 63px 15px 15px 15px;
+  padding: 15px 15px 15px 15px;
   border-left: 1px solid #393939;
+  background-color: var(--white);
 }
 
-@media (max-width: 968px) {
+.tab_content_top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.breadCrumb {
+  display: flex;
+  align-items: center;
+  font-family: 'IBMPlexSans-Regular';
+  font-size: 14px;
+  p {
+    color: #3d70b2;
+  }
+
+  span {
+    color: #5a6872;
+    padding: 0 13px;
+  }
+}
+
+.addon_root {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  justify-content: flex-end;
+  min-height: 62px;
+}
+
+.addon_svg {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent linear-gradient(307deg, #3598fe 0%, #2e90fa 15%, #2e90fa 15%, #2a8cf7 23%, #0763e0 100%) 0% 0%
+    no-repeat padding-box;
+  box-shadow: 0px 0px 10px 2px #2e90fa;
+  margin-left: 30px;
+
+  svg {
+    fill: #fff;
+    font-weight: bold;
+  }
+}
+
+.addon_list {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+
+.addon_item {
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #4a4f59;
+  font-size: 12px;
+  width: 62px;
+  height: 62px;
+  cursor: pointer;
+
+  background-color: #fff;
+  opacity: 0.7;
+
+  &.active {
+    opacity: 1;
+  }
+  & + & {
+    margin-left: 20px;
+  }
+  span {
+    display: block;
+    margin-top: 10px;
+  }
+  img {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+/* start responsive */
+@media (max-width: 1024px) {
   .globalBar_container {
     display: none;
+  }
+  .addon_root {
+    margin-top: 20px;
   }
 }

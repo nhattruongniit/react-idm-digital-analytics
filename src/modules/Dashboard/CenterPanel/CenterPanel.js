@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 // components
 import Tabs from './Tabs';
 import GlobalBar from './GlobalBar';
+import BreadCrumb from './BreadCrumb';
+import AddOn from './AddOn';
 
 // selectors
 import { isExpandDrawerSelector } from 'selectors/app.selector'
@@ -17,7 +19,12 @@ function CenterPanel({ children }) {
         <Tabs />
         <GlobalBar />
       </div>
-      <div className="tab_content" style={{ backgroundColor: '#161616'}}>
+      <div className="tab_content">
+        <div className="tab_content_top">
+          <BreadCrumb />
+          <AddOn />
+        </div>
+        <div className="clear" />
         <div>
           {children}
         </div>
