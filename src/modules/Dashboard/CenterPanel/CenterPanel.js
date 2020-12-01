@@ -15,7 +15,7 @@ function CenterPanel({ children }) {
 
   return (
     <div className="centerPanel_wrapper" style={{paddingLeft: !isExpandDrawer && '48px'}}>
-      <div className="centerPanel_top" style={{width: !isExpandDrawer && 'calc(100vw - 64px)'}}>
+      <div className="centerPanel_top">
         <Tabs />
         <GlobalBar />
       </div>
