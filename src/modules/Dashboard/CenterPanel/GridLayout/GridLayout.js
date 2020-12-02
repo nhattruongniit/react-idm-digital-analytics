@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from 'react-redux';
 import RGL, { WidthProvider } from "react-grid-layout";
-import _ from "lodash";
+
+// selectors
+import { addonSelector } from 'selectors/board.seclector';
 
 const ReactGridLayout = WidthProvider(RGL);
 
 const DefaultPage = () => {
-  const items = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
+  const addons = useSelector(addonSelector);
   const [layouts, setLayouts] = useState([]);
   
   const defaultProps = {
@@ -17,7 +20,7 @@ const DefaultPage = () => {
   }
 
   function generateLayout() {
-    const newLayouts  = items.map((_, i) => {
+    const newLayouts = addons.map((_, i) => {
       let w = 2;
       let h = 2;
       let x = 10;
@@ -55,8 +58,6 @@ const DefaultPage = () => {
         x = (i - 6) * 2 % defaultProps.cols;
         w = 2;
       }
-
-      console.log(x, y)
 
       return {
         x,
