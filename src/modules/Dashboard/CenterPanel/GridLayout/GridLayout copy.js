@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import RGL, { WidthProvider } from "react-grid-layout";
 import _ from "lodash";
 
 const ReactGridLayout = WidthProvider(RGL);
 
 const DefaultPage = () => {
-  const items = [1,2,3,4,5];
-  const [layouts, setLayouts] = useState([]);
+  const [items, setItems] = useState([1,2,3,4,5])
   
   const defaultProps = {
     className: "layout",
@@ -17,7 +16,7 @@ const DefaultPage = () => {
   }
 
   function generateLayout() {
-    const newLayouts  = items.map((_, i) => {
+    return items.map((_, i) => {
       let w = 4;
       if(i === 0 || i === 1 || i === 2)  w = 6;
       const y =  Math.ceil(Math.random() * 4) + 1;
@@ -29,15 +28,9 @@ const DefaultPage = () => {
         i: `simulator-${i}`.toString()
       };
     })
-
-    setLayouts(newLayouts);
   }
 
-  useEffect(() => {
-    generateLayout();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
+  console.log(generateLayout())
   const removeStyle = {
     position: "absolute",
     right: "2px",
@@ -45,29 +38,24 @@ const DefaultPage = () => {
     cursor: "pointer"
   };
 
-  const onRemoveItem = item => () => {
-    const newLayouts = layouts.filter((val) => val.i !== item)
-    setLayouts(newLayouts)
-  }
-
-  const _onLayoutChange = (layout) => {
-    setLayouts(layout)
+  const onRemoveItem = index => () => {
+    const newItems = items.filter((_, idx) => index !== idx)
+    setItems(newItems)
   }
 
   return (
     <ReactGridLayout 
       {...defaultProps}
-      layout={layouts}
-      onLayoutChange={_onLayoutChange}
+      layout={generateLayout()}
     >
-      {layouts.map((item) => {
+      {items.map((item, i) => {
         return (
-          <div key={item.i.toString()}>
-            {item.i}
+          <div key={`simulator-${i}`.toString()}>
+            {item}
             <span
               className="remove"
               style={removeStyle}
-              onClick={onRemoveItem(item.i)}
+              onClick={onRemoveItem(i)}
             >
               x
             </span>
