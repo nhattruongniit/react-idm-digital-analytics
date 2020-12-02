@@ -7,8 +7,6 @@ import reportWebVitals from './reportWebVitals';
 
 // styles
 import 'carbon-components/css/carbon-components.min.css';
-// import "react-grid-layout/css/styles.css"
-// import "react-resizable/css/styles.css"
 import 'scss/grid-layout.css';
 import 'scss/grid-resize.css';
 import 'scss/index.scss';

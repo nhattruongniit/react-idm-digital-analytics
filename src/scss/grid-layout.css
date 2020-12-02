@@ -25,7 +25,7 @@
 }
 
 .react-grid-item.react-grid-placeholder {
-  background: red;
+  background: #fff;
   opacity: 0.2;
   transition-duration: 100ms;
   z-index: 2;
@@ -59,11 +59,7 @@
 .react-grid-item {
   box-sizing: border-box;
 }
-.react-grid-item:not(.react-grid-placeholder) {
-  background: #ccc;
-  border: 1px solid black;
-  color: #fff;
-}
+
 .react-grid-item.resizing {
   opacity: 0.9;
 }

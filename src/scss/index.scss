@@ -324,6 +324,12 @@ p {
   }
 }
 
+.react-grid-item:not(.react-grid-placeholder) {
+  background: var(--grid);
+  border: 1px solid black;
+  color: #fff;
+}
+
 /* start responsive */
 @media (max-width: 1024px) {
   .globalBar_container {

@@ -5,7 +5,7 @@ import _ from "lodash";
 const ReactGridLayout = WidthProvider(RGL);
 
 const DefaultPage = () => {
-  const items = [1,2,3,4,5];
+  const items = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
   const [layouts, setLayouts] = useState([]);
   
   const defaultProps = {
@@ -18,14 +18,51 @@ const DefaultPage = () => {
 
   function generateLayout() {
     const newLayouts  = items.map((_, i) => {
-      let w = 4;
-      if(i === 0 || i === 1 || i === 2)  w = 6;
-      const y =  Math.ceil(Math.random() * 4) + 1;
+      let w = 2;
+      let h = 2;
+      let x = 10;
+      let y = Infinity;
+      
+      if(i === 0) {
+        w = 4;
+        h = 3;
+        x = 0;
+        y = 0;
+      }
+
+      if(i === 1) {
+        w = 3;
+        h = 3;
+        x = 4;
+        y = 0;
+      }
+
+      if(i === 2) {
+        w = 5;
+        x = 7;
+        h = 3;
+        y = 0;
+      }
+
+      if(i === 3) {
+        w = 10;
+        x = 0;
+        h = 5;
+        y = 3;
+      }
+
+      if (i >= 6) {
+        x = (i - 6) * 2 % defaultProps.cols;
+        w = 2;
+      }
+
+      console.log(x, y)
+
       return {
-        x: (i * 6) % 12,
-        y: Math.floor(i / 6) * y,
+        x,
+        y,
         w,
-        h: 4,
+        h,
         i: `simulator-${i}`.toString()
       };
     })
