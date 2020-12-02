@@ -13,9 +13,7 @@ const Dashboard = () => {
     <div className="container">
       <NavBar />
       <CenterPanel>
-
-      
-      <GridLayout />
+        <GridLayout />
       </CenterPanel>
     </div>
   )
