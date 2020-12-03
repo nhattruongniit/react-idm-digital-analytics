@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import RGL, { WidthProvider } from "react-grid-layout";
 
 // selectors
 import { addonSelector } from 'selectors/board.seclector';
 
+// actions
+import { removeAddon } from 'actions/board.action';
+
 const ReactGridLayout = WidthProvider(RGL);
 
 const DefaultPage = () => {
   const addons = useSelector(addonSelector);
+  const dispatch = useDispatch();
   const [layouts, setLayouts] = useState([]);
   
   const defaultProps = {
@@ -20,7 +24,7 @@ const DefaultPage = () => {
   }
 
   function generateLayout() {
-    const newLayouts = addons.map((_, i) => {
+    const newLayouts = addons.map((item, i) => {
       let w = 2;
       let h = 2;
       let x = 10;
@@ -64,7 +68,7 @@ const DefaultPage = () => {
         y,
         w,
         h,
-        i: `simulator-${i}`.toString()
+        i: `simulator-${item}`.toString()
       };
     })
 
@@ -74,7 +78,7 @@ const DefaultPage = () => {
   useEffect(() => {
     generateLayout();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [addons])
 
   const removeStyle = {
     position: "absolute",
@@ -83,9 +87,10 @@ const DefaultPage = () => {
     cursor: "pointer"
   };
 
-  const onRemoveItem = item => () => {
+  const onRemoveItem = (item, idx) => () => {
     const newLayouts = layouts.filter((val) => val.i !== item)
-    setLayouts(newLayouts)
+    setLayouts(newLayouts);
+    dispatch(removeAddon(idx))
   }
 
   const _onLayoutChange = (layout) => {
@@ -98,14 +103,14 @@ const DefaultPage = () => {
       layout={layouts}
       onLayoutChange={_onLayoutChange}
     >
-      {layouts.map((item) => {
+      {layouts.map((item, idx) => {
         return (
           <div key={item.i.toString()}>
             {item.i}
             <span
               className="remove"
               style={removeStyle}
-              onClick={onRemoveItem(item.i)}
+              onClick={onRemoveItem(item.i, idx)}
             >
               x
             </span>

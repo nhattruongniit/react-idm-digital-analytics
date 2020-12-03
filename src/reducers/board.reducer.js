@@ -1,7 +1,7 @@
-import { ADD_ADDON } from 'actions/board.action';
+import { ADD_ADDON, REMOVE_ADDON } from 'actions/board.action';
 
 const initialState = {
-  addon: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+  addon: [1,2,3,4]
 }
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -11,6 +11,13 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         addon: [...state.addon, payload]
       }
+    case REMOVE_ADDON: 
+      const newAddon = state.addon.filter((_, index) => index !== payload);
+      return {
+        ...state,
+        addon: newAddon
+      }
+    
     default:
       return state;
   }
