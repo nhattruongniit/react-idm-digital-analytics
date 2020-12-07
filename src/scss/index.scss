@@ -330,6 +330,69 @@ p {
   color: #fff;
 }
 
+.chart_overmenu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+
+  .bx--overflow-menu__icon {
+    fill: var(--textSecond);
+  }
+  .bx--overflow-menu:hover,
+  .bx--overflow-menu__trigger:hover,
+  .bx--overflow-menu.bx--overflow-menu--open,
+  .bx--overflow-menu.bx--overflow-menu--open .bx--overflow-menu__trigger {
+    background-color: transparent;
+  }
+}
+
+/* start chart carbon */
+.chartCarbon {
+  height: 100%;
+  padding: 10px;
+  background-color: var(--grid);
+  overflow: hidden;
+  .bx--chart-holder {
+    background-color: var(--grid);
+  }
+  .bx--cc--grid rect.chart-grid-backdrop {
+    fill: var(--grid);
+  }
+
+  .bx--cc--axes g.axis g.tick text,
+  g.bx--cc--legend g.legend-item text {
+    fill: var(--textPrimary);
+  }
+
+  .bx--cc--grid rect.chart-grid-backdrop.stroked {
+    stroke: var(--grid);
+  }
+
+  .bx--cc--grid g.x.grid g.tick line,
+  .bx--cc--grid g.y.grid g.tick line {
+    stroke: var(--axisPrimary);
+  }
+  .bx--cc--grid g.x.grid g.tick line {
+    stroke: var(--grid);
+  }
+
+  .bx--cc--title text.title {
+    fill: var(--textSecond);
+  }
+
+  &.chartDonut {
+    svg.bx--cc--chart-svg text.pie-label {
+      fill: var(--textPrimary);
+    }
+    svg.bx--cc--chart-svg text {
+      fill: var(--textSecond);
+    }
+  }
+}
+
+/* end chart carbon */
+
 /* start responsive */
 @media (max-width: 1024px) {
   .globalBar_container {

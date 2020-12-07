@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import RGL, { WidthProvider } from "react-grid-layout";
+import { OverflowMenu, OverflowMenuItem } from 'carbon-components-react';
+import '@carbon/charts/styles.css';
+
+// components
+import ChartStackedBar from './ChartStackedBar';
+import ChartDonut from './ChartDonut';
+import ChartLine from './ChartLine';
 
 // selectors
-import { addonSelector } from 'selectors/board.seclector';
+import { addonSelector, boardDataSelector } from 'selectors/board.seclector';
 
 // actions
 import { removeAddon } from 'actions/board.action';
@@ -12,6 +19,7 @@ const ReactGridLayout = WidthProvider(RGL);
 
 const DefaultPage = () => {
   const addons = useSelector(addonSelector);
+  const boardData = useSelector(boardDataSelector);
   const dispatch = useDispatch();
   const [layouts, setLayouts] = useState([]);
   
@@ -68,9 +76,10 @@ const DefaultPage = () => {
         y,
         w,
         h,
-        i: `simulator-${item}`.toString()
+        i: item.toString(),
       };
     })
+
 
     setLayouts(newLayouts);
   }
@@ -106,14 +115,30 @@ const DefaultPage = () => {
       {layouts.map((item, idx) => {
         return (
           <div key={item.i.toString()}>
-            {item.i}
-            <span
+            {/* {item.i} */}
+            <div className="chart_overmenu">
+              <OverflowMenu>
+                <OverflowMenuItem
+                  itemText="Option 1"
+                  primaryFocus
+                />
+                <OverflowMenuItem itemText="Option 3" />
+              </OverflowMenu> 
+            </div>
+
+            {boardData[Number(item.i)] && boardData[Number(item.i)].type === 'stackedBar' && <ChartStackedBar data={boardData[Number(item.i)].data} options={boardData[Number(item.i)].options} /> }
+
+            {boardData[Number(item.i)] && boardData[Number(item.i)].type === 'donut' && <ChartDonut data={boardData[Number(item.i)].data} options={boardData[Number(item.i)].options} /> }
+
+            {boardData[Number(item.i)] && boardData[Number(item.i)].type === 'line' && <ChartLine data={boardData[Number(item.i)].data} options={boardData[Number(item.i)].options} /> }
+
+            {/* <span
               className="remove"
               style={removeStyle}
               onClick={onRemoveItem(item.i, idx)}
             >
               x
-            </span>
+            </span> */}
           </div>
         )
       })}

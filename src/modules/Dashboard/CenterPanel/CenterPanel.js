@@ -29,7 +29,6 @@ function CenterPanel({ children }) {
           {children}
         </div>
       </div>
-      
     </div>
   )
 }
