@@ -1,5 +1,3 @@
-import _ from "lodash";
-
 // components
 import NavBar from './NavBar';
 import CenterPanel from './CenterPanel';

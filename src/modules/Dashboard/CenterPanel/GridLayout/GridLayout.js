@@ -13,7 +13,7 @@ import ChartLine from './ChartLine';
 import { addonSelector, boardDataSelector } from 'selectors/board.seclector';
 
 // actions
-import { removeAddon } from 'actions/board.action';
+// import { removeAddon } from 'actions/board.action';
 
 const ReactGridLayout = WidthProvider(RGL);
 
@@ -88,18 +88,18 @@ const DefaultPage = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [addons])
 
-  const removeStyle = {
-    position: "absolute",
-    right: "2px",
-    top: 0,
-    cursor: "pointer"
-  };
+  // const removeStyle = {
+  //   position: "absolute",
+  //   right: "2px",
+  //   top: 0,
+  //   cursor: "pointer"
+  // };
 
-  const onRemoveItem = (item, idx) => () => {
-    const newLayouts = layouts.filter((val) => val.i !== item)
-    setLayouts(newLayouts);
-    dispatch(removeAddon(idx))
-  }
+  // const onRemoveItem = (item, idx) => () => {
+  //   const newLayouts = layouts.filter((val) => val.i !== item)
+  //   setLayouts(newLayouts);
+  //   dispatch(removeAddon(idx))
+  // }
 
   // const _onLayoutChange = (layout) => {
   //   setLayouts(layout)
