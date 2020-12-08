@@ -80,8 +80,6 @@ const DefaultPage = () => {
         i: item.toString(),
       };
     })
-
-
     setLayouts(newLayouts);
   }
 
@@ -120,6 +118,34 @@ const DefaultPage = () => {
     setLayouts(newGrid)
   }
 
+  const _handleMaximize = (grid, item) => () => {
+    const newGrid = grid.map((ele, i) => {
+      if(ele.i === item) {
+        return {
+          ...grid[i],
+          w: 12,
+          h: 12
+        }
+      }
+      return grid[i];
+    })
+    setLayouts(newGrid)
+  }
+
+  const _handleMinimize = (grid, item) => () => {
+    const newGrid = grid.map((ele, i) => {
+      if(ele.i === item) {
+        return {
+          ...grid[i],
+          w: 1,
+          h: 1
+        }
+      }
+      return grid[i];
+    })
+    setLayouts(newGrid)
+  }
+
   return (
     <ReactGridLayout 
       {...defaultProps}
@@ -131,8 +157,8 @@ const DefaultPage = () => {
           <div key={item.i.toString()}>
             <div className="chart_overmenu">
               <OverflowMenu flipped>
-                <OverflowMenuItem itemText="Maximize" />
-                <OverflowMenuItem itemText="Minimize" />
+                <OverflowMenuItem itemText="Maximize" onClick={_handleMaximize(layouts, item.i)} />
+                <OverflowMenuItem itemText="Minimize" onClick={_handleMinimize(layouts, item.i)} />
                 <OverflowMenuItem itemText="Lock" onClick={_handleLock(layouts, item.i)}/>
                 <OverflowMenuItem itemText="Full Screen" />
                 <OverflowMenuItem itemText="Close" hasDivider />
