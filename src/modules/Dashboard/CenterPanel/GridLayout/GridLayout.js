@@ -102,27 +102,26 @@ const DefaultPage = () => {
     dispatch(removeAddon(idx))
   }
 
-  const _onLayoutChange = (layout) => {
-    setLayouts(layout)
-  }
+  // const _onLayoutChange = (layout) => {
+  //   setLayouts(layout)
+  // }
 
   return (
     <ReactGridLayout 
       {...defaultProps}
       layout={layouts}
-      onLayoutChange={_onLayoutChange}
+      // onLayoutChange={_onLayoutChange}
     >
       {layouts.map((item, idx) => {
         return (
           <div key={item.i.toString()}>
-            {/* {item.i} */}
             <div className="chart_overmenu">
-              <OverflowMenu>
-                <OverflowMenuItem
-                  itemText="Option 1"
-                  primaryFocus
-                />
-                <OverflowMenuItem itemText="Option 3" />
+              <OverflowMenu flipped>
+                <OverflowMenuItem itemText="Maximize" />
+                <OverflowMenuItem itemText="Minimize" />
+                <OverflowMenuItem itemText="Lock" />
+                <OverflowMenuItem itemText="Full Screen" />
+                <OverflowMenuItem itemText="Close" hasDivider />
               </OverflowMenu> 
             </div>
 

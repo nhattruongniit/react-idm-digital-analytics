@@ -1,12 +1,16 @@
 :root {
-  --white: #161616;
+  --root: #161616;
   --primary: #1e7bee;
   --grid: #262626;
   --textPrimary: #8d8d8d;
   --textSecond: #f4f4f4;
+  --textOverflow: #c6c6c6;
   --axisPrimary: #393939;
+  --overflowPrimary: #141414;
+  --overflowHover: #353535;
+  --white: #fff;
 }
 
 [data-theme='white'] {
-  --white: white;
+  --root: white;
 }

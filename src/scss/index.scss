@@ -231,10 +231,10 @@ p {
 /* end dreawer */
 .tab_content {
   min-height: 150vh;
-  color: #fff;
-  padding: 15px 15px 15px 15px;
+  color: var(--white);
+  padding: 15px;
   border-left: 1px solid #393939;
-  background-color: var(--white);
+  background-color: var(--root);
 }
 
 .tab_content_top {
@@ -330,6 +330,11 @@ p {
   color: #fff;
 }
 
+.react-grid-item > .react-resizable-handle::after {
+  border-color: var(--white);
+}
+
+/* start OverflowMenu */
 .chart_overmenu {
   position: absolute;
   top: 0;
@@ -343,9 +348,32 @@ p {
   .bx--overflow-menu__trigger:hover,
   .bx--overflow-menu.bx--overflow-menu--open,
   .bx--overflow-menu.bx--overflow-menu--open .bx--overflow-menu__trigger {
-    background-color: transparent;
+    background-color: var(--grid);
   }
 }
+
+.bx--overflow-menu-options,
+.bx--overflow-menu-options::after {
+  background-color: var(--grid);
+}
+
+.bx--overflow-menu-options__btn {
+  color: var(--textOverflow);
+}
+
+.bx--overflow-menu-options__option:hover {
+  background-color: var(--overflowHover);
+}
+
+.bx--overflow-menu-options__btn:hover {
+  color: var(--textSecond);
+}
+
+.bx--overflow-menu--divider {
+  border-color: var(--axisPrimary);
+}
+
+/* end OverflowMenu */
 
 /* start chart carbon */
 .chartCarbon {
