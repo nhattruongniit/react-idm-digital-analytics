@@ -76,6 +76,7 @@ const DefaultPage = () => {
         y,
         w,
         h,
+        static: false,
         i: item.toString(),
       };
     })
@@ -106,6 +107,19 @@ const DefaultPage = () => {
   //   setLayouts(layout)
   // }
 
+  const _handleLock = (grid, item) => () => {
+    const newGrid = grid.map((ele, i) => {
+      if(ele.i === item) {
+        return {
+          ...grid[i],
+          static: !ele.static
+        }
+      }
+      return grid[i];
+    })
+    setLayouts(newGrid)
+  }
+
   return (
     <ReactGridLayout 
       {...defaultProps}
@@ -119,7 +133,7 @@ const DefaultPage = () => {
               <OverflowMenu flipped>
                 <OverflowMenuItem itemText="Maximize" />
                 <OverflowMenuItem itemText="Minimize" />
-                <OverflowMenuItem itemText="Lock" />
+                <OverflowMenuItem itemText="Lock" onClick={_handleLock(layouts, item.i)}/>
                 <OverflowMenuItem itemText="Full Screen" />
                 <OverflowMenuItem itemText="Close" hasDivider />
               </OverflowMenu> 

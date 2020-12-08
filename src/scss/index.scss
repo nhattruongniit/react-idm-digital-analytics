@@ -334,6 +334,14 @@ p {
   border-color: var(--white);
 }
 
+.react-resizable-hide {
+  opacity: 0.6;
+}
+
+.react-resizable-hide > .react-resizable-handle {
+  display: none;
+}
+
 /* start OverflowMenu */
 .chart_overmenu {
   position: absolute;
