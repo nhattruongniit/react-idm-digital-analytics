@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import RGL, { WidthProvider } from "react-grid-layout";
 import { OverflowMenu, OverflowMenuItem } from 'carbon-components-react';
 import '@carbon/charts/styles.css';
