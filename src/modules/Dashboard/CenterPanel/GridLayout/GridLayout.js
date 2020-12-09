@@ -20,9 +20,9 @@ const ReactGridLayout = WidthProvider(RGL);
 const DefaultPage = () => {
   const addons = useSelector(addonSelector);
   const boardData = useSelector(boardDataSelector);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [layouts, setLayouts] = useState([]);
-  
+
   const defaultProps = {
     className: "layout",
     rowHeight: 115,
@@ -37,29 +37,29 @@ const DefaultPage = () => {
       let h = 2;
       let x = 10;
       let y = Infinity;
-      
-      if(i === 0) {
+
+      if (i === 0) {
         w = 4;
         h = 3;
         x = 0;
         y = 0;
       }
 
-      if(i === 1) {
+      if (i === 1) {
         w = 3;
         h = 3;
         x = 4;
         y = 0;
       }
 
-      if(i === 2) {
+      if (i === 2) {
         w = 5;
         x = 7;
         h = 3;
         y = 0;
       }
 
-      if(i === 3) {
+      if (i === 3) {
         w = 10;
         x = 0;
         h = 5;
@@ -85,7 +85,7 @@ const DefaultPage = () => {
 
   useEffect(() => {
     generateLayout();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [addons])
 
   // const removeStyle = {
@@ -107,7 +107,7 @@ const DefaultPage = () => {
 
   const _handleLock = (grid, item) => () => {
     const newGrid = grid.map((ele, i) => {
-      if(ele.i === item) {
+      if (ele.i === item) {
         return {
           ...grid[i],
           static: !ele.static
@@ -120,7 +120,7 @@ const DefaultPage = () => {
 
   const _handleMaximize = (grid, item) => () => {
     const newGrid = grid.map((ele, i) => {
-      if(ele.i === item) {
+      if (ele.i === item) {
         return {
           ...grid[i],
           w: 12,
@@ -134,7 +134,7 @@ const DefaultPage = () => {
 
   const _handleMinimize = (grid, item) => () => {
     const newGrid = grid.map((ele, i) => {
-      if(ele.i === item) {
+      if (ele.i === item) {
         return {
           ...grid[i],
           w: 1,
@@ -147,10 +147,10 @@ const DefaultPage = () => {
   }
 
   return (
-    <ReactGridLayout 
+    <ReactGridLayout
       {...defaultProps}
       layout={layouts}
-      // onLayoutChange={_onLayoutChange}
+    // onLayoutChange={_onLayoutChange}
     >
       {layouts.map((item, idx) => {
         return (
@@ -159,17 +159,17 @@ const DefaultPage = () => {
               <OverflowMenu flipped>
                 <OverflowMenuItem itemText="Maximize" onClick={_handleMaximize(layouts, item.i)} />
                 <OverflowMenuItem itemText="Minimize" onClick={_handleMinimize(layouts, item.i)} />
-                <OverflowMenuItem itemText="Lock" onClick={_handleLock(layouts, item.i)}/>
+                <OverflowMenuItem itemText="Lock" onClick={_handleLock(layouts, item.i)} />
                 <OverflowMenuItem itemText="Full Screen" />
                 <OverflowMenuItem itemText="Close" hasDivider />
-              </OverflowMenu> 
+              </OverflowMenu>
             </div>
 
-            {boardData[Number(item.i)] && boardData[Number(item.i)].type === 'stackedBar' && <ChartStackedBar data={boardData[Number(item.i)].data} options={boardData[Number(item.i)].options} /> }
+            {boardData[Number(item.i)] && boardData[Number(item.i)].type === 'stackedBar' && <ChartStackedBar data={boardData[Number(item.i)].data} options={boardData[Number(item.i)].options} />}
 
-            {boardData[Number(item.i)] && boardData[Number(item.i)].type === 'donut' && <ChartDonut data={boardData[Number(item.i)].data} options={boardData[Number(item.i)].options} /> }
+            {boardData[Number(item.i)] && boardData[Number(item.i)].type === 'donut' && <ChartDonut data={boardData[Number(item.i)].data} options={boardData[Number(item.i)].options} />}
 
-            {boardData[Number(item.i)] && boardData[Number(item.i)].type === 'line' && <ChartLine data={boardData[Number(item.i)].data} options={boardData[Number(item.i)].options} /> }
+            {boardData[Number(item.i)] && boardData[Number(item.i)].type === 'line' && <ChartLine data={boardData[Number(item.i)].data} options={boardData[Number(item.i)].options} />}
 
             {/* <span
               className="remove"
