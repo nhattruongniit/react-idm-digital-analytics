@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import RGL, { WidthProvider } from "react-grid-layout";
 import { OverflowMenu, OverflowMenuItem } from 'carbon-components-react';
+import styled from "styled-components";
 import '@carbon/charts/styles.css';
 
 // components
@@ -13,15 +14,16 @@ import ChartLine from './ChartLine';
 import { addonSelector, boardDataSelector } from 'selectors/board.seclector';
 
 // actions
-// import { removeAddon } from 'actions/board.action';
+import { removeAddon } from 'actions/board.action';
 
 const ReactGridLayout = WidthProvider(RGL);
 
 const DefaultPage = () => {
   const addons = useSelector(addonSelector);
   const boardData = useSelector(boardDataSelector);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [layouts, setLayouts] = useState([]);
+  const [defaultLayouts, setDefaultLayouts] = useState([]);
 
   const defaultProps = {
     className: "layout",
@@ -76,11 +78,13 @@ const DefaultPage = () => {
         y,
         w,
         h,
-        static: false,
+        static: defaultLayouts.length > 0 && defaultLayouts[i] && defaultLayouts[i].static,
         i: item.toString(),
       };
     })
+
     setLayouts(newLayouts);
+    setDefaultLayouts(newLayouts);
   }
 
   useEffect(() => {
@@ -88,60 +92,55 @@ const DefaultPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [addons])
 
-  // const removeStyle = {
-  //   position: "absolute",
-  //   right: "2px",
-  //   top: 0,
-  //   cursor: "pointer"
-  // };
+  const _onRemoveItem = (layouts, item, idx) => () => {
+    const newLayouts = layouts.filter((val) => val.i !== item);
 
-  // const onRemoveItem = (item, idx) => () => {
-  //   const newLayouts = layouts.filter((val) => val.i !== item)
-  //   setLayouts(newLayouts);
-  //   dispatch(removeAddon(idx))
-  // }
+    dispatch(removeAddon(idx))
+    setLayouts(newLayouts);
+  }
 
-  // const _onLayoutChange = (layout) => {
-  //   setLayouts(layout)
-  // }
+  const _onLayoutChange = (layout) => {
+    setLayouts(layout)
+  }
 
-  const _handleLock = (grid, item) => () => {
-    const newGrid = grid.map((ele, i) => {
+  const _handleLock = (layouts, item) => () => {
+    const newGrid = layouts.map((ele, i) => {
       if (ele.i === item) {
         return {
-          ...grid[i],
+          ...layouts[i],
           static: !ele.static
         }
       }
-      return grid[i];
+      return layouts[i];
     })
-    setLayouts(newGrid)
+    setLayouts(newGrid);
+    setDefaultLayouts(newGrid)
   }
 
-  const _handleMaximize = (grid, item) => () => {
-    const newGrid = grid.map((ele, i) => {
+  const _handleMaximize = (layouts, item) => () => {
+    const newGrid = layouts.map((ele, i) => {
       if (ele.i === item) {
         return {
-          ...grid[i],
+          ...layouts[i],
           w: 12,
           h: 12
         }
       }
-      return grid[i];
+      return layouts[i];
     })
     setLayouts(newGrid)
   }
 
-  const _handleMinimize = (grid, item) => () => {
-    const newGrid = grid.map((ele, i) => {
+  const _handleMinimize = (layouts, item) => () => {
+    const newGrid = layouts.map((ele, i) => {
       if (ele.i === item) {
         return {
-          ...grid[i],
-          w: 1,
-          h: 1
+          ...layouts[i],
+          w: defaultLayouts[i].w,
+          h: defaultLayouts[i].h
         }
       }
-      return grid[i];
+      return layouts[i];
     })
     setLayouts(newGrid)
   }
@@ -150,18 +149,18 @@ const DefaultPage = () => {
     <ReactGridLayout
       {...defaultProps}
       layout={layouts}
-    // onLayoutChange={_onLayoutChange}
+      onLayoutChange={_onLayoutChange}
     >
       {layouts.map((item, idx) => {
         return (
           <div key={item.i.toString()}>
             <div className="chart_overmenu">
               <OverflowMenu flipped>
-                <OverflowMenuItem itemText="Maximize" onClick={_handleMaximize(layouts, item.i)} />
-                <OverflowMenuItem itemText="Minimize" onClick={_handleMinimize(layouts, item.i)} />
-                <OverflowMenuItem itemText="Lock" onClick={_handleLock(layouts, item.i)} />
+                <SizeStyled ismaximize={item.w === 12 && item.h === 12 ? 1 : 0} itemText="Maximize" onClick={_handleMaximize(layouts, item.i)} />
+                <SizeStyled ismaximize={item.w < 12 && item.h < 12 ? 1 : 0} itemText="Minimize" onClick={_handleMinimize(layouts, item.i)} />
+                <OverflowMenuItem itemText={`${item.static ? "Unlock" : "Lock"}`} onClick={_handleLock(layouts, item.i)} />
                 <OverflowMenuItem itemText="Full Screen" />
-                <OverflowMenuItem itemText="Close" hasDivider />
+                {Number(item.i) >= 5 ? <OverflowMenuItem itemText="Close" hasDivider onClick={_onRemoveItem(layouts, item.i, idx)} /> : null}
               </OverflowMenu>
             </div>
 
@@ -171,13 +170,6 @@ const DefaultPage = () => {
 
             {boardData[Number(item.i)] && boardData[Number(item.i)].type === 'line' && <ChartLine data={boardData[Number(item.i)].data} options={boardData[Number(item.i)].options} />}
 
-            {/* <span
-              className="remove"
-              style={removeStyle}
-              onClick={onRemoveItem(item.i, idx)}
-            >
-              x
-            </span> */}
           </div>
         )
       })}
@@ -186,3 +178,8 @@ const DefaultPage = () => {
 }
 
 export default DefaultPage;
+
+const SizeStyled = styled(OverflowMenuItem)`
+  opacity: ${props => props.ismaximize ? 0.5 : 1};
+  pointer-events: ${props => props.ismaximize ? 'none' : 'default'};
+`
