@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 // material icons
 import ChevronDown20 from "@carbon/icons-react/lib/chevron--down/20";
@@ -30,40 +30,26 @@ function NavBarTreeProject() {
     setActiveItems({...activeItems})
   }
 
-  console.log(activeItems)
 
   const renderItem = (item, level) => {
     const paddingLeft = level * 10;
 
-    if(item.items.length > 0) {
-      return (
-        <Fragment key={`${item.id}`}>
-          <li className="navbar_project navbar_ul_line" onClick={_toggleActiveItem(item)}>
-            <div className="navbar_label">
-              <span className="navbar_label_title" style={{ paddingLeft }}>{item.label}</span>
-              <span className="navbar_label_icon">{activeItems[item.key] ? <ChevronDown20 /> : <ChevronUp20 />}</span>
-            </div>
-          </li>
-           
-            {activeItems[item.key] && (
-              <>
-                {item.items
-                  .filter(itemKey => treeProject[itemKey])
-                  .map(itemKey => renderItem(treeProject[itemKey], level + 1))}
-              </>
-            )}
-        </Fragment>
-      )
-    } else {
-      return (
-        <div key={`${item.key}${item.label}`} className="navbar_label" onClick={_toggleActiveItem(item)}>
-          <span className="navbar_label_title" style={{ paddingLeft }}>{item.label}</span>
+    return (
+      <Fragment key={`${item.id}`}>
+        <ParentStyled level={level} data-level={level} onClick={_toggleActiveItem(item)} style={{ paddingLeft }}>
+          <span className="navbar_label_title">{item.label}</span>
           <span className="navbar_label_icon">{activeItems[item.key] ? <ChevronDown20 /> : <ChevronUp20 />}</span>
-        </div>
-      )
-    }
+        </ParentStyled>
+        {activeItems[item.key] && (
+          <>
+            {item.items
+              .filter(itemKey => treeProject[itemKey])
+              .map(itemKey => renderItem(treeProject[itemKey], level + 1))}
+          </>
+        )}
+      </Fragment>
+    )
   }
-
   
   return (
     <>
@@ -72,4 +58,25 @@ function NavBarTreeProject() {
   )
 }
 
-export default NavBarTreeProject
+export default NavBarTreeProject;
+
+const ParentStyled = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  border-top: 1px solid #393939;
+  ${props => props.level === 0 && css`
+    padding: 16px 0 16px;
+  `}
+
+  ${props => props.level === 1 && css`
+    padding: 0px 0 8px;
+    border-top: 0
+  `}
+
+  ${props => props.level === 2 && css`
+    padding: 0px 0 8px;
+    border-top: 0
+  `}
+`

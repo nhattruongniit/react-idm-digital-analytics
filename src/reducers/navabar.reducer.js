@@ -1,4 +1,4 @@
-import { SET_TREE_PROJECT, SET_TREE_ITEM, SET_TREE_DATA, ADD_TREE_ITEM } from 'actions/navbar.action';
+import { SET_TREE_ITEM, SET_TREE_DATA, ADD_TREE_ITEM } from 'actions/navbar.action';
 
 const initialState = {
   treeProject: {}

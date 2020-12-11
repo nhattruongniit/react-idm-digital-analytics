@@ -1,7 +1,6 @@
 // mockHttp
 import { fetchDocument, fetchSimulator } from 'services/mockHttp';
 
-export const SET_TREE_PROJECT = 'NAVBAR/SET_TREE_PROJECT';
 export const SET_TREE_ITEM = 'NAVBAR/SET_TREE_ITEM';
 export const ADD_TREE_ITEM = 'NAVBAR/ADD_TREE_ITEM';
 export const SET_TREE_DATA = 'NAVBAR/SET_TREE_DATA';
@@ -34,10 +33,9 @@ export const fetchChildItems = (item) => async (dispatch, getState) => {
   const itemChildren = [];
   const additionTreeData = {};
   const parentData = item;
-  console.log('fetchChildItems: ', item);
 
   if(type === 'project' && item.items.length === 0) {
-    const documents = await fetchDocument(item.id);
+    const documents = await fetchDocument(id);
     
     documents.forEach(document => {
       const key = `document-${document.id}`;
@@ -55,7 +53,7 @@ export const fetchChildItems = (item) => async (dispatch, getState) => {
   }
 
   if(type === 'document' && item.items.length === 0) {
-    const simulators = await fetchSimulator(item.id);
+    const simulators = await fetchSimulator(id);
 
     console.log('simulators: ', simulators)
     

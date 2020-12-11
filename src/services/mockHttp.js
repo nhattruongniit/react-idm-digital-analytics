@@ -34,7 +34,7 @@ export const fetchSimulator = (documentId) => {
 
 export const fetchChart = (simulatorId) => {
   const data = new Promise(resovle => {
-    const chart = dataSimulator.filter(ele => ele.parent_simulation_id === simulatorId)
+    const chart = dataChart.filter(ele => ele.parent_simulation_id === simulatorId)
     setTimeout(() => {
       resovle(chart)
     }, 100)

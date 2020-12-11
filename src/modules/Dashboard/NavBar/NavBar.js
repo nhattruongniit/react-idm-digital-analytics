@@ -89,44 +89,7 @@ function NavBar() {
             <NavBarTreeProject />
           </div>
           <ul className="navbar_ul">
-            <li className="navbar_project navbar_ul_line">
-              <div className="navbar_label">
-                <span className="navbar_label_title">My Projects</span>
-                <span className="navbar_label_icon"> <ChevronDown20 /></span>
-              </div>
-              <ul>
-                <li>
-                  <div className="navbar_label">
-                    <span className="navbar_label_title" style={{ paddingLeft: 10}}>101 Hopeful St.</span>
-                    <span className="navbar_label_icon"> <ChevronDown20 /></span>
-                  </div>
-                  <ul>
-                    <li>
-                      <div className="navbar_label">
-                        <span className="navbar_label_title" style={{ paddingLeft: 20}}>IDF_Document_1</span>
-                        <span className="navbar_label_icon"> <ChevronDown20 /></span>
-                      </div>
-                      <ul>
-                        <li>
-                          <div className="navbar_label">
-                            <span className="navbar_label_title" style={{ paddingLeft: 30}}>Simulation_A</span>
-                            <span className="navbar_label_icon"> <ChevronDown20 /></span>
-                          </div>
-                          <ul>
-                            <li>
-                              <div className="navbar_label">
-                                <span className="navbar_label_title" style={{ paddingLeft: 40}}>Result_Chart_1</span>
-                              </div>
-                            </li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li className="nav_space navbar_ul_line">
+            <li className="nav_space navbar_ul_line nav_ul_line_first">
               <div className="navbar_label">
                 <span className="navbar_label_title">Draftls</span>
                 <span className="navbar_label_icon"> <ChevronDown20 /></span>
