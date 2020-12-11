@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import clsx from 'clsx';
 
@@ -23,11 +23,29 @@ import LogoIcon from 'assets/images/logo.svg';
 import { setExpandDrawer } from 'actions/app.action';
 
 // selectors
-import { isExpandDrawerSelector } from 'selectors/app.selector'
+import { isExpandDrawerSelector } from 'selectors/app.selector';
+
+// mockHttp
+import { fetchProject } from 'services/mockHttp';
+
+// actions
+import { fetchProjects } from 'actions/navbar.action';
+
+// components
+import NavBarTreeProject from './NavBarTreeProject';
 
 function NavBar() {
   const dispatch = useDispatch();
   const isExpandDrawer = useSelector(isExpandDrawerSelector);
+
+  useEffect(() => {
+    async function getProject() {
+      const data = await fetchProject();
+      dispatch(fetchProjects(data))
+    }
+    getProject();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const toggleDrawer = () => {
     dispatch(setExpandDrawer(!isExpandDrawer))
@@ -67,6 +85,9 @@ function NavBar() {
           </HeaderGlobalAction>
         </div>
         <div className={clsx('navbar_treeview', !isExpandDrawer && 'navbar_treeview_hidden')}>
+          <div className="menu_project">
+            <NavBarTreeProject />
+          </div>
           <ul className="navbar_ul">
             <li className="navbar_project navbar_ul_line">
               <div className="navbar_label">
