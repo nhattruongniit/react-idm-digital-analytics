@@ -1,7 +1,8 @@
-import { SET_EXPAND_DRAWER } from 'actions/app.action';
+import { SET_EXPAND_DRAWER, SET_LOADING } from 'actions/app.action';
 
 const initialState = {
-  isExpandDrawer: true
+  isExpandDrawer: true,
+  isLoading: false
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -10,6 +11,12 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         isExpandDrawer: payload
+      }
+    }
+    case SET_LOADING: {
+      return {
+        ...state,
+        isLoading: payload
       }
     }
     default:
