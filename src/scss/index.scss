@@ -116,6 +116,10 @@ p {
   padding: 16px 0;
 }
 
+.nav_ul_line_first {
+  border-top: 1px solid #393939;
+}
+
 .navbar_project {
   padding-bottom: 16px;
   .navbar_label {
@@ -428,6 +432,14 @@ p {
 }
 
 /* end chart carbon */
+
+.menu_project {
+  color: #a8a8a8;
+
+  & div:first-child {
+    border-top: 0 !important;
+  }
+}
 
 /* start responsive */
 @media (max-width: 1024px) {

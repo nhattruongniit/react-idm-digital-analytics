@@ -188,3 +188,62 @@ export const lineData = {
     },
   ]
 }
+
+export const dataProject = [
+  {
+    id: 1,
+    project_name: 'project 1'
+  },
+  {
+    id: 2,
+    project_name: 'project 2'
+  },
+  {
+    id: 3,
+    project_name: 'project 3'
+  }
+]
+
+export const dataDocument = [
+  {
+    id: 1,
+    project_id: 1,
+    document_name: 'document 1',
+  },
+  {
+    id: 2,
+    project_id: 1,
+    document_name: 'document 2',
+  },
+  {
+    id: 3,
+    project_id: 2,
+    document_name: 'document 3',
+  }
+]
+
+export const dataSimulator = [
+  {
+    id: 1,
+    document_id: 1,
+    simulator_name: 'simulator 1'
+  },
+  {
+    id: 2,
+    document_id: 2,
+    simulator_name: 'simulator 2'
+  }
+]
+
+export const dataChart = [
+  {
+    id: 1,
+    parent_simulation_id: 1,
+    chart_name: 'chart 1'
+  },
+  {
+    id: 2,
+    parent_simulation_id: 2,
+    chart_name: 'chart 2'
+  }
+]
