@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import RGL, { WidthProvider } from "react-grid-layout";
-import { OverflowMenu, OverflowMenuItem } from 'carbon-components-react';
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import '@carbon/charts/styles.css';
+
+// carbon core
+import Close20 from "@carbon/icons-react/lib/close/20";
+import { OverflowMenu, OverflowMenuItem } from 'carbon-components-react';
 
 // components
 import ChartStackedBar from './ChartStackedBar';
@@ -24,14 +27,18 @@ const DefaultPage = () => {
   const dispatch = useDispatch();
   const [layouts, setLayouts] = useState([]);
   const [defaultLayouts, setDefaultLayouts] = useState([]);
+  const [gridItem, setGridItem] = useState({
+    isFullScreen: false,
+    gridId: -1
+  });
 
-  const defaultProps = {
+  const [defaultProps, setDefaultProps] = useState({
     className: "layout",
     rowHeight: 115,
     cols: 12,
     isResizable: true,
     isDraggable: true
-  }
+  })
 
   function generateLayout() {
     const newLayouts = addons.map((item, i) => {
@@ -103,6 +110,20 @@ const DefaultPage = () => {
     setLayouts(layout)
   }
 
+  const _handleFullScreen = itemI => () => {
+    const newGridItem = {
+      isFullScreen: !gridItem.isFullScreen,
+      gridId: itemI
+    }
+    const newDefaultProps = {
+      ...defaultProps,
+      isDraggable: !newGridItem.isFullScreen 
+    }
+
+    setGridItem(newGridItem);
+    setDefaultProps(newDefaultProps)
+  }
+
   const _handleLock = (layouts, item) => () => {
     const newGrid = layouts.map((ele, i) => {
       if (ele.i === item) {
@@ -152,25 +173,35 @@ const DefaultPage = () => {
       onLayoutChange={_onLayoutChange}
     >
       {layouts.map((item, idx) => {
+        const numberI = Number(item.i);
+        const isFullScreen  = gridItem.isFullScreen && gridItem.gridId === numberI;
+
         return (
-          <div key={item.i.toString()}>
-            <div className="chart_overmenu">
-              <OverflowMenu flipped>
-                <SizeStyled ismaximize={item.w === 12 && item.h === 12 ? 1 : 0} itemText="Maximize" onClick={_handleMaximize(layouts, item.i)} />
-                <SizeStyled ismaximize={item.w < 12 && item.h < 12 ? 1 : 0} itemText="Minimize" onClick={_handleMinimize(layouts, item.i)} />
-                <OverflowMenuItem itemText={`${item.static ? "Unlock" : "Lock"}`} onClick={_handleLock(layouts, item.i)} />
-                <OverflowMenuItem itemText="Full Screen" />
-                {Number(item.i) >= 5 ? <OverflowMenuItem itemText="Close" hasDivider onClick={_onRemoveItem(layouts, item.i, idx)} /> : null}
-              </OverflowMenu>
+          <ItemStyled key={item.i.toString()} isFullScreen={isFullScreen}>
+            <div className="contentStyled">
+              {isFullScreen ? (
+                <div className="chart_closeIcon" onClick={_handleFullScreen(numberI)}>
+                  <Close20 />
+                </div>
+              ) : (
+                <div className="chart_overmenu">
+                  <OverflowMenu flipped>
+                    <SizeStyled ismaximize={item.w === 12 && item.h === 12 ? 1 : 0} itemText="Maximize" onClick={_handleMaximize(layouts, item.i)} />
+                    <SizeStyled ismaximize={item.w < 12 && item.h < 12 ? 1 : 0} itemText="Minimize" onClick={_handleMinimize(layouts, item.i)} />
+                    <OverflowMenuItem itemText={`${item.static ? "Unlock" : "Lock"}`} onClick={_handleLock(layouts, item.i)} />
+                    <OverflowMenuItem itemText="Full Screen" onClick={_handleFullScreen(numberI)} />
+                    {numberI >= 5 ? <OverflowMenuItem itemText="Close" hasDivider onClick={_onRemoveItem(layouts, item.i, idx)} /> : null}
+                  </OverflowMenu>
+                </div>
+              )}
+              
+              {boardData[numberI] && boardData[numberI].type === 'stackedBar' && <ChartStackedBar data={boardData[numberI].data} options={boardData[numberI].options} />}
+
+              {boardData[numberI] && boardData[numberI].type === 'donut' && <ChartDonut data={boardData[numberI].data} options={boardData[numberI].options} />}
+
+              {boardData[numberI] && boardData[numberI].type === 'line' && <ChartLine data={boardData[numberI].data} options={boardData[numberI].options} />}
             </div>
-
-            {boardData[Number(item.i)] && boardData[Number(item.i)].type === 'stackedBar' && <ChartStackedBar data={boardData[Number(item.i)].data} options={boardData[Number(item.i)].options} />}
-
-            {boardData[Number(item.i)] && boardData[Number(item.i)].type === 'donut' && <ChartDonut data={boardData[Number(item.i)].data} options={boardData[Number(item.i)].options} />}
-
-            {boardData[Number(item.i)] && boardData[Number(item.i)].type === 'line' && <ChartLine data={boardData[Number(item.i)].data} options={boardData[Number(item.i)].options} />}
-
-          </div>
+          </ItemStyled>
         )
       })}
     </ReactGridLayout>
@@ -182,4 +213,42 @@ export default DefaultPage;
 const SizeStyled = styled(OverflowMenuItem)`
   opacity: ${props => props.ismaximize ? 0.5 : 1};
   pointer-events: ${props => props.ismaximize ? 'none' : 'default'};
+`
+
+const ItemStyled = styled.div`
+  .contentStyled {
+    width: 100%;
+    height: 100%;
+  }
+
+  ${props => props.isFullScreen && css`
+    position: fixed !important;
+    width: 100% !important;
+    height: 100% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+
+    &::after {
+      content: '';
+      position: fixed;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left:0;
+      background-color: #000;
+      opacity: 0.3;
+    }
+    .contentStyled {
+      position: absolute;
+      z-index: 3;
+      width: 95%;
+      height: 95%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  `}
 `

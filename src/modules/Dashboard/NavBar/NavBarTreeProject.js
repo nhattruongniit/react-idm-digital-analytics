@@ -38,7 +38,7 @@ function NavBarTreeProject() {
       <Fragment key={`${item.id}`}>
         <ParentStyled level={level} data-level={level} onClick={_toggleActiveItem(item)} style={{ paddingLeft }}>
           <span className="navbar_label_title">{item.label}</span>
-          <span className="navbar_label_icon">{activeItems[item.key] ? <ChevronDown20 /> : <ChevronUp20 />}</span>
+          <span className="navbar_label_icon">{activeItems[item.key] ? <ChevronUp20 /> : <ChevronDown20 /> }</span>
         </ParentStyled>
         {activeItems[item.key] && (
           <>
