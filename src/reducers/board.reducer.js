@@ -1,14 +1,15 @@
 import { ADD_ADDON, REMOVE_ADDON } from 'actions/board.action';
 
 // mockdata
-import { stackedBarData, donutData, lineData } from 'mockData';
+import { stackedBarData, donutData, lineData, stackedAreaData } from 'mockData';
 
 const initialState = {
   addon: [1,2,3,4],
   boardData: {
     1: stackedBarData,
     2: donutData,
-    3: lineData
+    3: lineData,
+    4: stackedAreaData
   }
 }
 

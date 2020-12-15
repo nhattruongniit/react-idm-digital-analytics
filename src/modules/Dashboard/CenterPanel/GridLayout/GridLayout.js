@@ -12,6 +12,7 @@ import { OverflowMenu, OverflowMenuItem } from 'carbon-components-react';
 import ChartStackedBar from './ChartStackedBar';
 import ChartDonut from './ChartDonut';
 import ChartLine from './ChartLine';
+import ChartStackedArea from './ChartStackedArea';
 
 // selectors
 import { addonSelector, boardDataSelector } from 'selectors/board.seclector';
@@ -36,6 +37,7 @@ const DefaultPage = () => {
     className: "layout",
     rowHeight: 115,
     cols: 12,
+    autoSize: true,
     isResizable: true,
     isDraggable: true
   })
@@ -200,6 +202,8 @@ const DefaultPage = () => {
               {boardData[numberI] && boardData[numberI].type === 'donut' && <ChartDonut data={boardData[numberI].data} options={boardData[numberI].options} />}
 
               {boardData[numberI] && boardData[numberI].type === 'line' && <ChartLine data={boardData[numberI].data} options={boardData[numberI].options} />}
+
+              {boardData[numberI] && boardData[numberI].type === 'stackedArea' && <ChartStackedArea data={boardData[numberI].data} options={boardData[numberI].options} />}
             </div>
           </ItemStyled>
         )
