@@ -1,0 +1,29 @@
+.dashboard {
+  padding-top: 40px;
+}
+
+.dashboard_top {
+  padding-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--axisPrimary);
+}
+
+.dashboard_title {
+  font-size: 20px;
+  color: var(--white);
+}
+
+.dashboard_mode {
+  span {
+    display: inline-block;
+    & + span {
+      padding-left: 10px;
+    }
+  }
+  svg {
+    fill: var(--cds-icon-02);
+    cursor: pointer;
+  }
+}
