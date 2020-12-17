@@ -8,6 +8,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   word-break: break-all;
+  color: var(--textPrimary);
+  background-color: var(--root);
 }
 
 code {
@@ -35,23 +37,10 @@ p {
 }
 
 main {
-  height: calc(100vh - 48px);
-  background-color: var(--root);
-}
-
-.container {
-  width: 1024px;
-  max-width: 100%;
-  margin: 0 auto;
+  padding-top: 48px;
 }
 
 /* start header */
-.header {
-  .bx--header {
-    position: relative;
-  }
-}
-
 .header_logo {
   padding: 0 16px;
 }
@@ -460,6 +449,99 @@ main {
 }
 
 /* end chart carbon */
+
+/* === start pagination ===*/
+.bx--pagination {
+  background-color: var(--cds-ui-01, #f4f4f4);
+  border-top: 1px solid var(--cds-ui-03, #e0e0e0);
+}
+
+.bx--pagination__left,
+.bx--pagination__text {
+  color: var(--cds-text-01, #161616) !important;
+}
+
+.bx--pagination .bx--select__item-count .bx--select-input {
+  border-right: 0.0625rem solid var(--cds-ui-03, #e0e0e0);
+}
+
+.bx--select--inline .bx--select-input {
+  color: var(--cds-text-01, #161616);
+}
+
+.bx--select__arrow {
+  fill: var(--cds-ui-05, #161616);
+}
+
+.bx--label {
+  color: var(--cds-text-02, #525252);
+}
+
+.bx--pagination .bx--select__page-number .bx--select-input {
+  border-left: 1px solid var(--cds-ui-03, #e0e0e0);
+}
+.bx--btn--ghost:active,
+.bx--btn--ghost:hover {
+  color: var(--cds-hover-primary-text, #0043ce);
+}
+
+.bx--btn--ghost:hover {
+  background-color: var(--cds-hover-ui, #e5e5e5);
+}
+
+.bx--btn--ghost:hover.bx--pagination__button,
+.bx--pagination__button:hover {
+  background: var(--cds-hover-ui, #e5e5e5);
+}
+
+.bx--btn--ghost.bx--pagination__button--no-index,
+.bx--pagination__button--no-index {
+  fill: var(--cds-disabled-02, #c6c6c6);
+}
+
+.bx--btn--ghost.bx--pagination__button,
+.bx--pagination__button {
+  border-left: 1px solid var(--cds-ui-03, #e0e0e0);
+}
+
+.bx--btn--ghost.bx--pagination__button svg,
+.bx--pagination__button svg {
+  fill: var(--cds-icon-01, #161616);
+}
+
+.bx--pagination .bx--select-input:hover {
+  background: var(--cds-hover-ui, #e5e5e5);
+}
+
+.bx--btn--ghost.bx--btn--icon-only[disabled] .bx--btn__icon svg {
+  fill: var(--cds-disabled-02, #c6c6c6);
+}
+
+.bx--btn--ghost.bx--btn--icon-only .bx--btn__icon,
+.bx--btn--ghost.bx--btn--icon-only .bx--btn__icon path,
+.bx--btn.bx--btn--icon-only.bx--btn--ghost .bx--btn__icon,
+.bx--btn.bx--btn--icon-only.bx--btn--ghost:hover .bx--btn__icon {
+  fill: var(--cds-icon-01, #161616);
+}
+
+.bx--btn.bx--btn--icon-only.bx--tooltip__trigger:focus {
+  border-color: var(--cds-focus, #0f62fe);
+  outline: 1px solid var(--cds-focus, #0f62fe);
+}
+
+.bx--pagination__button:disabled svg {
+  cursor: not-allowed;
+  fill: var(--cds-disabled-02, #c6c6c6);
+  background: var(--cds-ui-01, #f4f4f4);
+  border-color: var(--cds-ui-03, #e0e0e0);
+}
+
+.bx--pagination__button:disabled:hover,
+.bx--pagination__button--no-index:hover {
+  background: var(--cds-hover-ui, #e5e5e5) !important;
+}
+
+/* === end pagination === */
 
 .menu_project {
   color: #a8a8a8;
