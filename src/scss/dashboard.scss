@@ -14,7 +14,7 @@
 }
 
 .dashboard_title {
-  font-size: 20px;
+  font-size: 24px;
   color: var(--white);
 }
 
@@ -23,6 +23,11 @@
     display: inline-block;
     & + span {
       padding-left: 10px;
+    }
+    &.active {
+      svg {
+        fill: #5596e6;
+      }
     }
   }
   svg {
@@ -35,7 +40,7 @@
   margin-top: 20px;
 }
 
-.dashboardGrid_list {
+.dashboardGrid_root {
   display: flex;
   flex-wrap: wrap;
 
@@ -165,7 +170,7 @@
 }
 
 @media (max-width: 768px) {
-  .dashboardGrid_list > :nth-child(3n -1) {
+  .dashboardGrid_root > :nth-child(3n -1) {
     margin-left: 0;
     margin-right: 0;
   }

@@ -379,7 +379,7 @@ export const projectData = {
       version_id: 1     
     },
     {
-      charts: 0,
+      charts: 3,
       copyright: "",
       created_at: "2020-12-17 15:37:58",
       description: "",
@@ -390,7 +390,7 @@ export const projectData = {
       public: 0,
       public_project_id: null,
       remote: 0,
-      simulations: 0,
+      simulations: 5,
       updated_at: "2020-12-17 15:37:58",
       version: "8.4",
       version_id: 1     

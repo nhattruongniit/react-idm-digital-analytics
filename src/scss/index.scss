@@ -543,6 +543,87 @@ main {
 
 /* === end pagination === */
 
+/* ===== start data table ===*/
+.bx--data-table {
+  tr {
+    cursor: pointer;
+
+    td:first-child {
+      width: 40%;
+    }
+  }
+}
+.bx--data-table-header {
+  background: var(--cds-ui-01, #f4f4f4);
+}
+
+.bx--data-table-header__title {
+  color: var(--cds-text-01, #161616);
+}
+
+.bx--data-table-header__description {
+  color: var(--cds-text-02, #525252);
+}
+
+.bx--data-table thead {
+  background-color: var(--cds-ui-03, #e0e0e0);
+}
+
+.bx--data-table th {
+  color: var(--cds-text-01, #161616);
+  background-color: var(--cds-ui-03, #e0e0e0);
+}
+
+.bx--data-table tbody {
+  background-color: var(--cds-ui-01, #f4f4f4);
+}
+
+.bx--data-table tbody th,
+.bx--data-table td {
+  background: var(--cds-ui-01, #f4f4f4);
+  color: var(--cds-text-02, #525252);
+  border-top: 1px solid var(--cds-ui-01, #f4f4f4);
+  border-bottom: 1px solid var(--cds-ui-03, #e0e0e0);
+}
+
+.bx--data-table td a {
+  color: var(--cds-text-02, #525252) !important;
+}
+
+.bx--data-table tbody tr:hover td,
+.bx--data-table tbody tr:hover th {
+  color: var(--cds-text-01, #161616);
+  background: var(--cds-hover-field, #e5e5e5);
+  border-bottom: 1px solid var(--cds-hover-field, #e5e5e5);
+  border-top: 1px solid var(--cds-hover-field, #e5e5e5);
+}
+
+.bx--data-table td:last-of-type {
+  padding-right: 2rem;
+}
+
+.bx--data-table--zebra tbody tr:not(.bx--parent-row):nth-child(odd) td {
+  background-color: #fff;
+  border-bottom: 1px solid #fff;
+  border-top: 1px solid #fff;
+}
+
+.bx--data-table--zebra[class*='--data-table--zebra'] tbody tr:nth-child(odd) td {
+  background-color: var(--cds-ui-02, #fff);
+  border-bottom: var(--cds-ui-02, #fff);
+  border-top: var(--cds-ui-02, #fff);
+}
+
+.bx--data-table--zebra tbody tr:not(.bx--parent-row):nth-child(2n) td {
+  border-bottom: 1px solid var(--cds-ui-01, #f4f4f4);
+}
+
+.bx--data-table--zebra tbody tr:not(.bx--parent-row):nth-child(even) td {
+  background-color: var(--cds-ui-01, #f4f4f4);
+  border-top: 1px solid var(--cds-ui-01, #f4f4f4);
+}
+/* === end data table === */
+
 .menu_project {
   color: #a8a8a8;
 
