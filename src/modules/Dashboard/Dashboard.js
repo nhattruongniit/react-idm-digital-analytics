@@ -5,6 +5,10 @@ import ListIcon from '@carbon/icons-react/es/list/20';
 
 // components
 import GridView from 'components/GridView';
+import Pagination from 'components/Pagination';
+
+// mock data
+import { projectData } from 'mockData';
 
 const Dashboard = () => {
   return (
@@ -22,6 +26,8 @@ const Dashboard = () => {
       </div>
       <div className="dashboard_content">
         <GridView />
+        <Pagination totalItems={8} currentPage={1} perPage={10} />
+
       </div>
     </div>
   )

@@ -342,7 +342,7 @@ export const dataChart = [
   }
 ]
 
-export const projectsData  = {
+export const projectData = {
   data: [
     {
       charts: 0,
