@@ -6,7 +6,7 @@ import FolderIcon from 'assets/images/icon-folder.svg';
 import PlugIcon from 'assets/images/icon-plug.png';
 
 
-function GridView({ data }) {
+function GridView({ data, onOpen }) {
   return (
     <div className="dashboardGrid_root">
       {data.map(item => (
@@ -28,7 +28,7 @@ function GridView({ data }) {
               </div>
             </div>
             <div className="dashboardGrid_blur">
-              <button type="button">Open</button>
+              <button type="button" onClick={onOpen(item.id)}>Open</button>
             </div>
           </div>
           <div className="dashboardGrid_infor">

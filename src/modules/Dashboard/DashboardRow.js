@@ -4,13 +4,18 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 
 // carbon cores
 import { TableCell, TableRow } from 'carbon-components-react';
+import { Link } from 'react-router-dom';
 
 dayjs.extend(relativeTime);
 
 function DashboardRow({ rowData }) {
   return (
     <TableRow>
-      <TableCell>{rowData.project_name}</TableCell>
+      <TableCell>
+        <Link to={`project/${rowData.id}`}>
+          {rowData.project_name}
+        </Link>
+      </TableCell>
       <TableCell>{rowData.version}</TableCell>
       <TableCell>{rowData.idf_documents}</TableCell>
       <TableCell>{rowData.simulations}</TableCell>

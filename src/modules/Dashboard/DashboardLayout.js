@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 // components
@@ -40,11 +41,17 @@ const tableHeaders = [
 ];
 
 function DashboardLayout() {
+  const  history = useHistory();
   const layoutType = useSelector(layoutTypeSelector);
+
+
+  const _onOpen = projectId => () => {
+    history.push(`project/${projectId}`)
+  }
 
   return (
     <>
-      {layoutType === 'grid' && <GridView data={projectData.data} />}
+      {layoutType === 'grid' && <GridView data={projectData.data} onOpen={_onOpen} />}
 
       {layoutType === 'list' && <ListView data={projectData.data} tableheaders={tableHeaders} rowItem={DashboardRow} />}
       
