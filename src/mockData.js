@@ -350,6 +350,23 @@ export const projectData = {
       created_at: "2020-12-17 15:37:58",
       description: "",
       forked: 0,
+      id: 1,
+      idf_documents: 1,
+      project_name: "project 1",
+      public: 0,
+      public_project_id: null,
+      remote: 0,
+      simulations: 0,
+      updated_at: "2020-12-17 15:37:58",
+      version: "8.4",
+      version_id: 1     
+    },
+    {
+      charts: 0,
+      copyright: "",
+      created_at: "2020-12-17 15:37:58",
+      description: "",
+      forked: 0,
       id: 8,
       idf_documents: 1,
       project_name: "project 8",
@@ -463,23 +480,6 @@ export const projectData = {
       version: "8.4",
       version_id: 1     
     },
-    {
-      charts: 0,
-      copyright: "",
-      created_at: "2020-12-17 15:37:58",
-      description: "",
-      forked: 0,
-      id: 1,
-      idf_documents: 1,
-      project_name: "project 1",
-      public: 0,
-      public_project_id: null,
-      remote: 0,
-      simulations: 0,
-      updated_at: "2020-12-17 15:37:58",
-      version: "8.4",
-      version_id: 1     
-    }
   ],
   links: {
     first: "http://dev-02.workers.usonialabs.com/api/projects?page=1",

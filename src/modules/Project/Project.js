@@ -1,14 +1,15 @@
 import React from 'react';
 
 // components
-import NavBar from 'components/NavBar';
+import ProjectNavBar from './ProjectNavBar';
+import CenterPanel from './CenterPanel';
 
 function Project() {
   return (
-    <>
-      <NavBar />
-      this is project
-    </>
+    <div className="project_root">
+      <ProjectNavBar />
+      <CenterPanel />
+    </div>
   )
 }
 

@@ -230,7 +230,7 @@ const ItemStyled = styled.div`
     width: 100% !important;
     height: 100% !important;
     transform: translate(-50%, -50%) !important;
-    z-index: 2;
+    z-index: 9999;
     top: 50%;
     left: 50%;
 
