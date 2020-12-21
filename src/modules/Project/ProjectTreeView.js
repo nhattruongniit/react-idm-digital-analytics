@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, memo } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import styled, { css } from 'styled-components';
 
@@ -12,7 +12,7 @@ import { treeProjectSelector } from 'selectors/navbar.selector'
 // actions
 import { fetchChildItems } from 'actions/navbar.action';
 
-function NavBarTreeProject() {
+function ProjectTreeView() {
   const [activeItems, setActiveItems] = useState({});
   const dispatch = useDispatch();
   const treeProject = useSelector(treeProjectSelector);
@@ -58,7 +58,7 @@ function NavBarTreeProject() {
   )
 }
 
-export default NavBarTreeProject;
+export default memo(ProjectTreeView);
 
 const ParentStyled = styled.div`
   display: flex;

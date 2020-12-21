@@ -2,7 +2,7 @@
 import { setLoading } from './app.action';
 
 // mockHttp
-import { fetchDocument, fetchSimulator } from 'services/mockHttp';
+import * as api from 'services/mockHttp';
 
 export const SET_TREE_ITEM = 'NAVBAR/SET_TREE_ITEM';
 export const ADD_TREE_ITEM = 'NAVBAR/ADD_TREE_ITEM';
@@ -27,7 +27,27 @@ export const fetchProjects = projects => async dispatch => {
     type: SET_TREE_DATA,
     payload: treeData
   })
-  
+}
+
+export const fetchDocuments = documents => async dispatch => {
+  const treeData = {};
+  documents.forEach(document => {
+    const key = `document-${document.id}`;
+    const item = {
+      key,
+      id: document.id,
+      type: 'document',
+      root: true,
+      label: document.document_name,
+      items: [],
+      canExpand: true
+    };
+    treeData[key] = item;
+  })
+  dispatch({
+    type: SET_TREE_DATA,
+    payload: treeData
+  })
 }
 
 export const fetchChildItems = (item) => async (dispatch) => {
@@ -38,7 +58,7 @@ export const fetchChildItems = (item) => async (dispatch) => {
 
   if(type === 'project' && item.items.length === 0) {
     dispatch(setLoading(true));
-    const documents = await fetchDocument(id);
+    const documents = await api.fetchDocument(id);
     
     documents.forEach(document => {
       const key = `document-${document.id}`;
@@ -57,7 +77,7 @@ export const fetchChildItems = (item) => async (dispatch) => {
 
   if(type === 'document' && item.items.length === 0) {
     dispatch(setLoading(true));
-    const simulators = await fetchSimulator(id);
+    const simulators = await api.fetchSimulator(id);
     
     simulators.forEach(simulator => {
       const key = `simulator-${simulator.id}`;

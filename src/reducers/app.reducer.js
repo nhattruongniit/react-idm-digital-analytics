@@ -1,8 +1,9 @@
-import { SET_EXPAND_DRAWER, SET_LOADING } from 'actions/app.action';
+import { SET_EXPAND_DRAWER, SET_LOADING, SET_LAYOUT_TYPE } from 'actions/app.action';
 
 const initialState = {
   isExpandDrawer: true,
-  isLoading: false
+  isLoading: false,
+  layoutType: 'grid'
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -17,6 +18,12 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         isLoading: payload
+      }
+    }
+    case SET_LAYOUT_TYPE: {
+      return {
+        ...state,
+        layoutType: payload
       }
     }
     default:
