@@ -69,8 +69,13 @@ main {
   border-right: 1px solid var(--axisPrimary);
   height: 100%;
 
-  .bx--header__action > svg {
-    fill: #a8a8a8;
+  .bx--header__action {
+    & > svg {
+      fill: #a8a8a8;
+    }
+    &.active > svg {
+      fill: #fff;
+    }
   }
 }
 

@@ -28,7 +28,7 @@ function NavBar() {
 
   return (
     <div className="navbar_options">
-      <HeaderGlobalAction aria-label="Folder" onClick={_handleChangeDrawer}>
+      <HeaderGlobalAction className={isExpandDrawer ? 'active' : ''} aria-label="Folder" onClick={_handleChangeDrawer}>
         {isExpandDrawer ? <FolderDetails20 /> : <FolderDetailsReference20 /> }
       </HeaderGlobalAction>
       <HeaderGlobalAction aria-label="Folder" onClick={() => {}}>
