@@ -3,7 +3,7 @@ import React from 'react';
 // carbon cores
 import { DataTable, TableContainer, Table, TableHead, TableRow, TableHeader, TableBody } from 'carbon-components-react';
 
-function ListView({ data, tableheaders, rowItem }) {
+function ListView({ data, tableheaders, rowItem: RowItem }) {
   return (
     <div className="dashboardList_root">
       <DataTable rows={data} headers={tableheaders}>
@@ -21,7 +21,6 @@ function ListView({ data, tableheaders, rowItem }) {
               </TableHead>
               <TableBody>
                 {rows.map((row, key) => {
-                  const RowItem = rowItem;
                   const rowData = data.find(item => item.id === row.id);
                   return (
                     <RowItem 

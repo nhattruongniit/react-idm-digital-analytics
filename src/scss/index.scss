@@ -376,6 +376,15 @@ main {
   cursor: pointer;
 }
 
+.iconSvg svg {
+  fill: var(--cds-icon-02, #525252);
+}
+
+.bx--data-table-content {
+  overflow: unset !important;
+  position: relative;
+}
+
 /* start OverflowMenu */
 .chart_overmenu {
   position: absolute;

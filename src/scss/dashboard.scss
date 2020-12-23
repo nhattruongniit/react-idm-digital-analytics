@@ -161,6 +161,23 @@
     color: #3d70b2;
     outline: 0;
   }
+
+  &_option {
+    position: absolute;
+    display: flex;
+    z-index: 1;
+    right: 10px;
+    top: 10px;
+  }
+
+  &_view {
+    padding: 15px;
+    position: absolute;
+    z-index: 1;
+    left: 5px;
+    bottom: 5px;
+    cursor: pointer;
+  }
 }
 
 @media (max-width: 1024px) {
