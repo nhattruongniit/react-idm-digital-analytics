@@ -11,7 +11,7 @@ import ChevronRight24 from "@carbon/icons-react/lib/chevron--right/24";
 // selectors
 import { isExpandDrawerSelector } from 'selectors/app.selector';
 
-const tabsData = [1,2,3,4,5,6,7,8,9,10]
+const tabsData = [1,2,3,4,5]
 
 function Tabs() {
   const isExpandDrawer = useSelector(isExpandDrawerSelector);
