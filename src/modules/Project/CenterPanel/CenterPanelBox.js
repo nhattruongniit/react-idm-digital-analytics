@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 // components
-import Tabs from './Tabs';
+import Tabs from 'components/Tabs';
 import BreadCrumb from './BreadCrumb';
 import AddOn from './AddOn';
 
@@ -15,9 +15,7 @@ function CenterPanelBox({ children }) {
 
   return (
     <CenterStyled isExpandDrawer={isExpandDrawer}>
-      <div className="centerPanel_top">
-        <Tabs />
-      </div>
+      <Tabs />
       <div className="tab_content">
         <div className="tab_content_top">
           <BreadCrumb />
