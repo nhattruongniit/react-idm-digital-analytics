@@ -45,7 +45,7 @@ const tableHeaders = [
   },
 ];
 
-function DashboardLayout() {
+function ProjectLayout() {
   const layoutType = useSelector(layoutTypeSelector);
 
   return (
@@ -58,4 +58,4 @@ function DashboardLayout() {
   )
 }
 
-export default DashboardLayout;
+export default ProjectLayout;

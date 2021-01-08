@@ -48,6 +48,12 @@ main {
   padding-top: 48px;
 }
 
+.requirement {
+  font-size: 0.75rem;
+  color: #da1e28;
+  margin: 0.25rem 0 0;
+}
+
 /* start header */
 .header_logo {
   padding: 0 16px;
@@ -469,6 +475,57 @@ main {
 }
 
 /* end chart carbon */
+/*==== start Modal of react carbon component =======*/
+
+.bx--modal-container {
+  max-height: 100%;
+  overflow: unset;
+}
+
+.bx--modal-container .bx--modal-content {
+  padding: 0 5%;
+  overflow: unset;
+}
+
+.bx--modal-container .bx--modal-header {
+  padding: 20px 5% 0;
+}
+
+.bx--modal-header__heading {
+  font-size: 1.5rem;
+}
+
+.bx--modal.is-visible {
+  z-index: 1000;
+}
+
+.bx--modal-container {
+  background-color: var(--cds-ui-01, #f4f4f4);
+}
+
+.bx--modal-content,
+.bx--modal-header__heading {
+  color: var(--cds-text-01, #161616);
+}
+
+.bx--modal-close__icon {
+  fill: var(--cds-icon-01, #161616);
+}
+
+.bx--modal-close__icon {
+  fill: var(--cds-icon-01, #161616);
+}
+
+.bx--modal-close:hover {
+  background-color: var(--cds-hover-ui, #e5e5e5);
+}
+
+.bx--modal-close:focus {
+  outline: none;
+  border-color: var(--cds-focus, #0f62fe);
+}
+
+/*==== end Modal of react carbon component =======*/
 
 /* === start pagination ===*/
 .bx--pagination {

@@ -13,7 +13,7 @@ import { treeProjectSelector } from 'selectors/navbar.selector'
 // actions
 import { fetchChildItems } from 'actions/navbar.action';
 
-function ProjectTreeView() {
+function DashboardTreeView() {
   const [activeItems, setActiveItems] = useState({});
   const dispatch = useDispatch();
   const treeProject = useSelector(treeProjectSelector);
@@ -73,8 +73,7 @@ function ProjectTreeView() {
   )
 }
 
-export default memo(ProjectTreeView);
-
+export default memo(DashboardTreeView);
 
 const ActionStyled = styled.div`
   align-items: center;

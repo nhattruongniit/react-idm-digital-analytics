@@ -12,8 +12,8 @@ function App() {
     <>
       <Header />
       <main>
-        <Route path="/" exact component={Dashboard} />
-        <Route path="/project/:id" exact component={Project} />
+        <Route path="/" exact component={Project} />
+        <Route path="/project/:id" exact component={Dashboard} />
       </main>
     </>
   )

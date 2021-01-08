@@ -17,9 +17,9 @@ import { fetchDocuments } from 'actions/navbar.action';
 
 // components
 import NavBar from 'components/NavBar';
-import ProjectTreeView from './ProjectTreeView';
+import DashboardTreeView from './DashboardTreeView';
 
-function ProjectNavBar() {
+function DashboardNavBar() {
   const dispatch = useDispatch();
   const isExpandDrawer = useSelector(isExpandDrawerSelector);
   const { id: projectId } = useParams();
@@ -38,7 +38,7 @@ function ProjectNavBar() {
       <NavBar />
       <div className="navbar_treeview" style={{ display: isExpandDrawer ? 'block' : 'none'}}>
         <div className="menu_project">
-          <ProjectTreeView />
+          <DashboardTreeView />
         </div>
         <ul className="navbar_ul">
           <li className="nav_space navbar_ul_line nav_ul_line_first">
@@ -83,4 +83,4 @@ function ProjectNavBar() {
   )
 }
 
-export default ProjectNavBar
+export default DashboardNavBar

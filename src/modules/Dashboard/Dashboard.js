@@ -1,24 +1,16 @@
+import React from 'react';
+
 // components
-import Pagination from 'components/Pagination';
-import ModeType from './ModeType';
-import DashboardLayout from './DashboardLayout';
+import DashboardNavBar from './DashboardNavBar';
+import CenterPanel from './CenterPanel';
 
-const Dashboard = () => {
+function Dashboard() {
   return (
-    <div className="dashboard">
-      <div className="dashboard_top">
-        <div className="dashboard_title">Project</div>
-        
-        <ModeType />
-
-      </div>
-      <div className="dashboard_content">
-        <DashboardLayout />
-        
-        <Pagination totalItems={8} currentPage={1} perPage={10} />
-      </div>
+    <div className="project_root">
+      <DashboardNavBar />
+      <CenterPanel />
     </div>
   )
-};
+}
 
-export default Dashboard;
+export default Dashboard
