@@ -16,6 +16,7 @@ import ChartStackedArea from './ChartStackedArea';
 
 // selectors
 import { addonSelector, boardDataSelector } from 'selectors/board.seclector';
+import { isExpandDrawerSelector } from 'selectors/app.selector';
 
 // actions
 import { removeAddon } from 'actions/board.action';
@@ -24,6 +25,7 @@ const ReactGridLayout = WidthProvider(RGL);
 
 const DefaultPage = () => {
   const addons = useSelector(addonSelector);
+  const isExpandDrawer = useSelector(isExpandDrawerSelector);
   const boardData = useSelector(boardDataSelector);
   const dispatch = useDispatch();
   const [layouts, setLayouts] = useState([]);
@@ -171,6 +173,7 @@ const DefaultPage = () => {
   return (
     <ReactGridLayout
       {...defaultProps}
+      key={isExpandDrawer}
       layout={layouts}
       onLayoutChange={_onLayoutChange}
     >

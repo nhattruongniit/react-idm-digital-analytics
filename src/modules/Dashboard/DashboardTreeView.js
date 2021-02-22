@@ -35,8 +35,6 @@ function DashboardTreeView() {
   const renderItem = (item, level) => {
     const paddingLeft = level * 10;
 
-    console.log(item)
-
     return (
       <Fragment key={`${item.id}`}>
         <ParentStyled level={level} data-level={level} style={{ paddingLeft }}>

@@ -7,6 +7,7 @@
 - react carbon design
 - yup
 - formik
+- styled components
 
 ## Screenshot
 

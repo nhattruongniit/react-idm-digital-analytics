@@ -2,7 +2,6 @@ import { Route } from 'react-router-dom';
 
 // modules
 import Dashboard from 'modules/Dashboard'
-import Project from 'modules/Project';
 
 // components
 import Header from 'components/Header';
@@ -12,8 +11,7 @@ function App() {
     <>
       <Header />
       <main>
-        <Route path="/" exact component={Project} />
-        <Route path="/project/:id" exact component={Dashboard} />
+        <Route path="/" exact component={Dashboard} />
       </main>
     </>
   )

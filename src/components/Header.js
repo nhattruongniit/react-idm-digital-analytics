@@ -18,9 +18,8 @@ import AppSwitcher20 from "@carbon/icons-react/lib/app-switcher/20";
 // selectors
 import { isExpandDrawerSelector } from 'selectors/app.selector';
 
-
 // assets
-import LogoIcon from 'assets/images/logo.svg';
+import LogoIcon from 'assets/images/logo.png';
 
 export default function DefaultPage() {
   const isExpandDrawer = useSelector(isExpandDrawerSelector);
